@@ -1,7 +1,8 @@
 import csv
 import pandas as pd
 
-FILE = "hand_landmarks.csv"
+V = "0.2"
+FILE = f"hand_landmarks_{V}.csv"
 
 # oneHand = []
 twoHand = ["A", "B", "D", "E", "F", "F", "G", "H", "J", "K", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"]
@@ -25,7 +26,7 @@ with open(FILE, "r") as csvFile:
         data.append(i)
 
 df = pd.DataFrame(data[1:], columns=data[0])
-df.to_csv("clean_landmarks.csv", index=False)
+df.to_csv(f"clean_landmarks_{V}.csv", index=False)
 print(df)
 
 print(df["label"].value_counts())
