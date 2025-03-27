@@ -114,7 +114,7 @@ def start_cam(cam : cv2.VideoCapture):
                     data.append([label]+data_x_ratio+data_y_ratio)
                     
             elif key == ord("q"):
-                LOC = f"./Dataset/{label}"
+                LOC = f"./Dataset"
                 FILE = f"{LOC}/{label}.csv"
                 os.makedirs(LOC, exist_ok=True)
                 columns = ["label"] + [f"x{i}" for i in range(1, 22)] + [f"y{i}" for i in range(1, 22)]
