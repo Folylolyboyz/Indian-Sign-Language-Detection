@@ -1,4 +1,5 @@
 import os
+import sys
 
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
@@ -95,7 +96,10 @@ def get_frame(cam : cv2.VideoCapture):
     return []
 
 def start_cam(cam : cv2.VideoCapture):
-    label = "A"
+    if len(sys.argv) != 2:
+        print("Argument error")
+        return
+    label = sys.argv[1]
     data = []
     
     while True:
@@ -103,7 +107,7 @@ def start_cam(cam : cv2.VideoCapture):
             get_frame(cam)
             key = cv2.waitKey(5) & 0xFF
             if key == ord("s"):
-                for i in range(10):
+                for i in range(20):
                     data_x_ratio, data_y_ratio = get_frame(cam)
                     data_x_ratio = list(map(lambda x: x/400, data_x_ratio))
                     data_y_ratio = list(map(lambda x: x/400, data_y_ratio))
